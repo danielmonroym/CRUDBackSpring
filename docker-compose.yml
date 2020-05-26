@@ -1,0 +1,37 @@
+
+
+
+
+version: "3.7"
+
+services:
+  docker-mysql:
+    image: mysql:5.7
+    networks: 
+      - spring-boot-mysql-network
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=lab7
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+ 
+      
+   
+  app:
+    environment: 
+        SPRING_DATABASE_URL: jdbc:mysql://docker-mysql:3306/lab7
+        
+    ports:
+       - 8089:8089
+    networks: 
+       - spring-boot-mysql-network
+    build: ./
+    
+    depends_on:
+       - docker-mysql
+networks: 
+  spring-boot-mysql-network:
+    driver: bridge
