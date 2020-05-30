@@ -29,11 +29,13 @@ public class Persona {
      @Column
     private String apellidos;
       @Column
-    private int salario;
+    private float salario;
        @Column
     private String cargo;
        @Column
     private String direccion;
+    @Column
+    private int antiguedad;
 
     public int getId() {
         return id;
@@ -59,11 +61,11 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public int getSalario() {
+    public float getSalario() {
         return salario;
     }
 
-    public void setSalario(int salario) {
+    public void setSalario(float salario) {
         this.salario = salario;
     }
 
@@ -82,5 +84,13 @@ public class Persona {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+       this.antiguedad= antiguedad;
+    }
+      
        
 }

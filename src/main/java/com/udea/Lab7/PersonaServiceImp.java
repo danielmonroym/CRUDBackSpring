@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonaServiceImp implements PersonaService{
     float aumento;
+    float salariofinal;
   @Autowired
   private PersonaRepositorio repositorio;
     @Override
@@ -30,10 +31,13 @@ public class PersonaServiceImp implements PersonaService{
 
     @Override
     public Persona add(Persona p) {
-  //    aumento=p.getSalario();
- //     if(p.getAntiguedad()>=2){
-  //       aumento=aumento*10/100;
-        return repositorio.save(p);
+    
+      if(p.getAntiguedad()>=2){
+     aumento=p.getSalario()*10/100;
+     salariofinal=p.getSalario()+aumento;
+        p.setSalario(salariofinal);
+    }
+    return repositorio.save(p);
     }
 
     @Override

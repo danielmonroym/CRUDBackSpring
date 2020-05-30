@@ -35,6 +35,7 @@ public class Controlador {
     }
     @PostMapping
     public Persona agregar(@RequestBody Persona p){
+        
         return service.add(p);
 }
     @GetMapping(path={"/{id}"})
