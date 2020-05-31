@@ -16,6 +16,7 @@ before_script:
 - mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';"
 - mysql -u root -e "GRANT ALL ON lab7.* TO 'admin'@'localhost';"
 before_install:
+- chmod +x mvnw
 - mvn package -Dmaven.test.skip=true 
 deploy:
  provider: heroku
