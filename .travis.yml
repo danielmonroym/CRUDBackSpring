@@ -8,13 +8,13 @@ sudo: required
 addons:
 apt:
 packages:
-- mysql-server-5.6
-- mysql-client-core-5.6
-- mysql-client-5.6
+- mysql-server-5.7
+- mysql-client-core-5.7
+- mysql-client-5.7
 before_script:
-- mysql -u travis -e 'CREATE DATABASE lab7;'
-- mysql -u travis -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';"
-- mysql -u travis -e "GRANT ALL ON lab7.* TO 'admin'@'localhost';"
+- mysql -u root -e 'CREATE DATABASE lab7;'
+- mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';"
+- mysql -u root -e "GRANT ALL ON lab7.* TO 'admin'@'localhost';"
 before_install:
 - chmod +x mvnw
 - mvn package -Dmaven.test.skip=true 
