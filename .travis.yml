@@ -22,6 +22,6 @@ deploy:
  skip_cleanup: true
  provider: heroku
  api_key:
-    secure: 56ddc957-711a-43e7-909b-7d8241343c71
+    secure: 3b66b76b-d116-4dbd-ab6c-1c0639081361
  app: back-spring
 
