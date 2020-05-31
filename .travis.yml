@@ -19,6 +19,7 @@ before_install:
 - chmod +x mvnw
 script: mvn package -Dmaven.test.skip=true 
 deploy:
+ skip_cleanup: true
  provider: heroku
  api_key:
     secure: 56ddc957-711a-43e7-909b-7d8241343c71
