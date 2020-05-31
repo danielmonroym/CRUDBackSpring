@@ -2,22 +2,17 @@ language: java
 jdk:
 - oraclejdk9
 services:
-- mysql
+- docker
 dist: trusty
 sudo: required
-addons:
-apt:
-packages:
-- mysql-server-5.7
-- mysql-client-core-5.7
-- mysql-client-5.7
-before_script:
-- mysql -u root -e 'CREATE DATABASE lab7;'
-- mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';"
-- mysql -u root -e "GRANT ALL ON lab7.* TO 'admin'@'localhost';"
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
+
 before_install:
-- chmod +x mvnw
-- mvn package -Dmaven.test.skip=true 
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 deploy:
  provider: heroku
  api_key:
